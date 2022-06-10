@@ -1,0 +1,4 @@
+@mixin flex($gap_size: 1rem) {
+  display: flex;
+  gap: var(--gap, $gap_size);
+}
