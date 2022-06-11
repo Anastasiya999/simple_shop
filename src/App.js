@@ -1,41 +1,42 @@
 import "./styles/App.scss";
+import Card from "./components/Card";
+import Header from "./components/Header";
+import Drawer from "./components/Drawer";
+
+const sneakers = [
+  {
+    title: "Nike Blaser Mid Suede",
+    price: 100,
+    imageUrl: "/img/sneakers/1.jpg",
+  },
+];
 function App() {
   return (
     <div className="wrapper">
-      <header className="d-flex justify-between align-center p-40">
-        <div className="d-flex align-center">
-          <img width={40} height={40} src="/img/logo.png"></img>
-          <div>
-            <h3 className="text-uppercase">React sneakers</h3>
-            <p>Shop with the best sneakers</p>
+      <Drawer />
+
+      <Header />
+      <div className="content p-40">
+        <div className="d-flex align-center justify-between mb-40">
+          <h1>All sneakers</h1>
+          <div className="search-block d-flex">
+            <img src="/img/search.svg" alt="Search" />
+            <input placeholder="Type to search..." />
           </div>
         </div>
-
-        <ul className="d-flex">
-          <li className="mr-30">
-            <img width={18} height={18} src="/img/cart.svg"></img>
-            <span>100</span>
-          </li>
-          <li>
-            <img width={18} height={18} src="/img/user.svg"></img>
-          </li>
-        </ul>
-      </header>
-      <div className="content p-40">
-        <h1 className="mb-40">All sneakers</h1>
-
-        <div className="card">
-          <img width={133} height={112} src="/img/sneakers/1.jpg" />
-          <h5>Nike Blaser Mid Suede</h5>
-          <div className="d-flex justify-between align-center">
-            <div className="d-flex flex-column">
-              <span>Price</span>
-              <b>120 pln</b>
-            </div>
-            <button>
-              <img src="/img/plus.svg" height={11} width={11} />
-            </button>
-          </div>
+        <div className="d-flex">
+          {sneakers.map((item, index) => {
+            return (
+              <Card
+                key={index}
+                title={item.title}
+                price={item.price}
+                imageUrl={item.imageUrl}
+                onClickPlus={() => console.log("adding to cart")}
+                onClickFavorite={() => console.log("adding to favorite")}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
