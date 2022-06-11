@@ -1,10 +1,11 @@
 import styles from "./Card.module.scss";
 import { useState } from "react";
-function Card({ title, price, imageUrl, onClickFavorite }) {
+function Card({ title, price, imageUrl, onPlus, onFavorite }) {
   const [isAdded, setAdded] = useState(false);
 
   const onClickPlus = () => {
     setAdded(!isAdded);
+    onPlus({ title, price, imageUrl });
   };
   return (
     <div className={styles.card}>
@@ -12,7 +13,7 @@ function Card({ title, price, imageUrl, onClickFavorite }) {
         src="/img/unliked.svg"
         alt="unliked"
         className={styles.favorite}
-        onClick={onClickFavorite}
+        onClick={onFavorite}
       />
 
       <img width={133} height={112} src={imageUrl} />

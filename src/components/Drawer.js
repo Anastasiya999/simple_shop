@@ -1,4 +1,4 @@
-function Drawer({ onClose }) {
+function Drawer({ onClose, items = [] }) {
   return (
     <div className="overlay">
       <div className="drawer d-flex flex-column">
@@ -7,38 +7,26 @@ function Drawer({ onClose }) {
           <img src="img/btn-remove.svg" onClick={onClose} />
         </h2>
         <div className="items">
-          <div className="cart-item d-flex align-center mb-20">
-            <div
-              style={{ backgroundImage: "url(/img/sneakers/1.jpg)" }}
-              className="cart-item-img"
-            ></div>
+          {items.map((item, index) => {
+            return (
+              <div className="cart-item d-flex align-center mb-20" key={index}>
+                <div
+                  style={{ backgroundImage: `url(${item.imageUrl})` }}
+                  className="cart-item-img"
+                ></div>
 
-            <div className="mr-20">
-              <p className="mb-5">Nike Blaser Mid Suede</p>
-              <b>100 pln</b>
-            </div>
-            <img
-              src="/img/btn-remove.svg"
-              alt="remove"
-              className="remove-btn"
-            />
-          </div>
-          <div className="cart-item d-flex align-center mb-20">
-            <div
-              style={{ backgroundImage: "url(/img/sneakers/1.jpg)" }}
-              className="cart-item-img"
-            ></div>
-
-            <div className="mr-20">
-              <p className="mb-5">Nike Blaser Mid Suede</p>
-              <b>100 pln</b>
-            </div>
-            <img
-              src="/img/btn-remove.svg"
-              alt="remove"
-              className="remove-btn"
-            />
-          </div>
+                <div className="mr-20">
+                  <p className="mb-5">{item.title}</p>
+                  <b>{item.price} pln</b>
+                </div>
+                <img
+                  src="/img/btn-remove.svg"
+                  alt="remove"
+                  className="remove-btn"
+                />
+              </div>
+            );
+          })}
         </div>
         <div className="cartTotalBlock">
           <ul>
