@@ -3,24 +3,29 @@ import "./styles/App.scss";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
+import axios from "axios";
 
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
   const [cartItems, setCartItems] = React.useState([]);
   const [items, setItems] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState("");
 
   const onAddToCart = (product) => {
-    setCartItems((prev) => [...prev, product]);
+    axios.post("https://62a42f2447e6e400638da88e.mockapi.io/cart", product);
+  };
+
+  const onSearchChange = (event) => {
+    setSearchValue(event.target.value);
   };
 
   React.useEffect(() => {
-    fetch("https://62a42f2447e6e400638da88e.mockapi.io/items")
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setItems(json);
-      });
+    axios
+      .get("https://62a42f2447e6e400638da88e.mockapi.io/items")
+      .then((res) => setItems(res.data));
+    axios
+      .get("https://62a42f2447e6e400638da88e.mockapi.io/cart")
+      .then((res) => setCartItems(res.data));
   }, []);
 
   return (
@@ -34,22 +39,40 @@ function App() {
           <h1>All sneakers</h1>
           <div className="search-block d-flex">
             <img src="/img/search.svg" alt="Search" />
-            <input placeholder="Type to search..." />
+            {searchValue && (
+              <img
+                src="img/btn-remove.svg"
+                className="clear"
+                alt="clear"
+                onClick={() => {
+                  setSearchValue("");
+                }}
+              />
+            )}
+            <input
+              onChange={onSearchChange}
+              placeholder="Type to search..."
+              value={searchValue}
+            />
           </div>
         </div>
         <div className="d-flex flex-wrap">
-          {items.map((item, index) => {
-            return (
-              <Card
-                key={index}
-                title={item.title}
-                price={item.price}
-                imageUrl={item.imageUrl}
-                onPlus={onAddToCart}
-                onFavorite={() => console.log("adding to favorite")}
-              />
-            );
-          })}
+          {items
+            .filter((item) =>
+              item.title.toLowerCase().includes(searchValue.toLowerCase())
+            )
+            .map((item, index) => {
+              return (
+                <Card
+                  key={item.imageUrl}
+                  title={item.title}
+                  price={item.price}
+                  imageUrl={item.imageUrl}
+                  onPlus={onAddToCart}
+                  onFavorite={() => console.log("adding to favorite")}
+                />
+              );
+            })}
         </div>
       </div>
     </div>

@@ -74,12 +74,22 @@ header {
   border: 1px solid rgba(234, 234, 234, 1);
   border-radius: 10px;
   padding-inline: 15px;
+  position: relative;
 
   input {
     border: 0;
     padding: 13px;
     font-size: 16px;
     width: 200px;
+  }
+
+  .clear {
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    width: 18px;
+    height: 18px;
   }
 }
 
