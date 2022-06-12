@@ -8,18 +8,19 @@ function Card({
   onPlus,
   onFavorite,
   favorited = false,
+  added = false,
 }) {
-  const [isAdded, setAdded] = useState(false);
+  const [isAdded, setAdded] = useState(added);
   const [isFavorite, setFavorite] = useState(favorited);
 
   const onClickPlus = () => {
-    onPlus({ title, price, imageUrl });
+    onPlus({ id, title, price, imageUrl });
     setAdded((prev) => !prev);
   };
 
   const onClickFavorite = () => {
-    setFavorite((prev) => !prev);
     onFavorite({ id, title, price, imageUrl });
+    setFavorite((prev) => !prev);
   };
 
   return (

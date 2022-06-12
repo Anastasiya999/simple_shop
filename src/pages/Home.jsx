@@ -6,6 +6,7 @@ function Home({
   onAddToCart,
   onAddToFavorite,
   onSearchChange,
+  cartItems,
 }) {
   return (
     <div className="content p-40">
@@ -39,8 +40,11 @@ function Home({
             return (
               <Card
                 key={item.imageUrl}
-                onPlus={onAddToCart}
+                onPlus={(obj) => onAddToCart(obj)}
                 onFavorite={onAddToFavorite}
+                added={cartItems.some(
+                  (obj) => Number(item.id) == Number(obj.id)
+                )}
                 {...item}
               />
             );
