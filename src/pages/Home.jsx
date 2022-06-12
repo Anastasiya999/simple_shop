@@ -39,12 +39,9 @@ function Home({
             return (
               <Card
                 key={item.imageUrl}
-                id={item.id}
-                title={item.title}
-                price={item.price}
-                imageUrl={item.imageUrl}
                 onPlus={onAddToCart}
                 onFavorite={onAddToFavorite}
+                {...item}
               />
             );
           })}
