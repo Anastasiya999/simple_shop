@@ -1,17 +1,19 @@
 import React from "react";
-import AppContext from "../context";
+import useCart from "../hooks/useCart";
 import Info from "./Info";
 import axios from "axios";
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function Drawer({ onClose, onRemove, items = [] }) {
   const [isOrderComplete, setIsOrderComplete] = React.useState();
+  const [isLoading, setIsLoading] = React.useState(false);
   const [orderId, setOrderId] = React.useState(null);
 
-  const { setCartItems, cartItems } = React.useContext(AppContext);
+  const { cartItems, setCartItems, totalPrice } = useCart();
 
   const onClickOrder = async () => {
     try {
+      setIsLoading(true);
       const { data } = await axios.post(
         `https://62a42f2447e6e400638da88e.mockapi.io/orders/`,
         {
@@ -33,6 +35,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
     } catch (error) {
       console.error(error);
     }
+    setIsLoading(false);
   };
   return (
     <div className="overlay">
@@ -74,15 +77,19 @@ function Drawer({ onClose, onRemove, items = [] }) {
                 <li className="d-flex">
                   <span>Summary</span>
                   <div></div>
-                  <b>100 pln</b>
+                  <b>{totalPrice} pln</b>
                 </li>
                 <li className="d-flex">
                   <span>Cut 5%</span>
                   <div></div>
-                  <b>5 pln</b>
+                  <b>{(totalPrice / 100) * 5} pln</b>
                 </li>
               </ul>
-              <button className="greenButton" onClick={onClickOrder}>
+              <button
+                className="greenButton"
+                disabled={isLoading}
+                onClick={onClickOrder}
+              >
                 Check out
                 <img src="/img/arrow.svg" alt="arrow" />
               </button>

@@ -103,6 +103,7 @@ function App() {
         items,
         cartItems,
         favorites,
+
         isItemAdded,
         onAddToFavorite,
         setCartOpened,
