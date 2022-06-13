@@ -9,7 +9,6 @@ import AppContext from "./context";
 import axios from "axios";
 
 function App() {
-  console.log(AppContext);
   const [cartOpened, setCartOpened] = React.useState(false);
   const [cartItems, setCartItems] = React.useState([]);
   const [favorites, setFavorites] = React.useState([]);
@@ -31,6 +30,7 @@ function App() {
           `https://62a42f2447e6e400638da88e.mockapi.io/cart/${product.id}`
         );
       } else {
+        console.log(product);
         axios.post("https://62a42f2447e6e400638da88e.mockapi.io/cart", product);
         setCartItems((prev) => [...prev, product]);
       }
@@ -41,7 +41,7 @@ function App() {
 
   const onRemoveItem = (id) => {
     try {
-      axios.delete(`https://60d62397943aa60017768e77.mockapi.io/cart/${id}`);
+      axios.delete(`https://62a42f2447e6e400638da88e.mockapi.io/cart/${id}`);
       setCartItems((prev) =>
         prev.filter((item) => Number(item.id) !== Number(id))
       );
@@ -74,6 +74,10 @@ function App() {
     }
   };
 
+  const isItemAdded = (id) => {
+    return cartItems.some((obj) => Number(id) == Number(obj.id));
+  };
+
   React.useEffect(() => {
     async function fetchData() {
       const itemsRes = await axios.get(
@@ -94,7 +98,17 @@ function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ items, cartItems, favorites }}>
+    <AppContext.Provider
+      value={{
+        items,
+        cartItems,
+        favorites,
+        isItemAdded,
+        onAddToFavorite,
+        setCartOpened,
+        setCartItems,
+      }}
+    >
       <div className="wrapper">
         {cartOpened && (
           <Drawer
@@ -121,10 +135,7 @@ function App() {
               />
             }
           />
-          <Route
-            path="/favorites"
-            element={<Favorites onFavorite={onAddToFavorite} />}
-          />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </div>
     </AppContext.Provider>

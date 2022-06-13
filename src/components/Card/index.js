@@ -1,6 +1,7 @@
 import styles from "./Card.module.scss";
 import ContentLoader from "react-content-loader";
-import { useState } from "react";
+import AppContext from "../../context";
+import { useEffect, useState, useContext } from "react";
 function Card({
   id,
   title,
@@ -9,15 +10,14 @@ function Card({
   onPlus,
   onFavorite,
   favorited = false,
-  added = false,
   loading = false,
 }) {
-  const [isAdded, setAdded] = useState(added);
+  const { isItemAdded } = useContext(AppContext);
+
   const [isFavorite, setFavorite] = useState(favorited);
 
   const onClickPlus = () => {
     onPlus({ id, title, price, imageUrl });
-    setAdded((prev) => !prev);
   };
 
   const onClickFavorite = () => {
@@ -62,7 +62,9 @@ function Card({
             <img
               style={{ cursor: "pointer" }}
               onClick={onClickPlus}
-              src={isAdded ? "/img/btn-checked.svg" : "/img/btn-plus.svg"}
+              src={
+                isItemAdded(id) ? "/img/btn-checked.svg" : "/img/btn-plus.svg"
+              }
               alt="plus"
             />
           </div>
