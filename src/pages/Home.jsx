@@ -8,7 +8,6 @@ function Home({
   onAddToCart,
   onAddToFavorite,
   onSearchChange,
-  cartItems,
   isLoading,
 }) {
   function renderItems() {

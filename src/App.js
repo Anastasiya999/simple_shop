@@ -18,24 +18,29 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(true);
   const [isOrderComplete, setIsOrderComplete] = React.useState(false);
 
-  const onAddToCart = (product) => {
+  const onAddToCart = async (product) => {
     try {
-      if (
-        cartItems.find((item) => {
-          return Number(item.id) == Number(product.id);
-        })
-      ) {
+      const findItem = cartItems.find((item) => {
+        return Number(item.parentId) == Number(product.parentId);
+      });
+      if (findItem) {
         setCartItems((prev) =>
-          prev.filter((item) => Number(item.id) != Number(product.id))
+          prev.filter(
+            (item) => Number(item.parentId) != Number(product.parentId)
+          )
         );
+        console.log("deleting", product);
         axios.delete(
-          `https://62a42f2447e6e400638da88e.mockapi.io/cart/${product.id}`
+          `https://62a42f2447e6e400638da88e.mockapi.io/cart/${findItem.id}`
         );
       } else {
-        setCartItems((prev) => [...prev, product]);
+        const { data } = await axios.post(
+          "https://62a42f2447e6e400638da88e.mockapi.io/cart",
+          product
+        );
+        setCartItems((prev) => [...prev, data]);
         setIsOrderComplete(false);
       }
-      axios.post("https://62a42f2447e6e400638da88e.mockapi.io/cart", product);
     } catch (error) {
       console.log(error.message);
       alert("Failure to add item to cart");
@@ -78,7 +83,7 @@ function App() {
   };
 
   const isItemAdded = (id) => {
-    return cartItems.some((obj) => Number(id) == Number(obj.id));
+    return cartItems.some((obj) => Number(id) == Number(obj.parentId));
   };
 
   React.useEffect(() => {
