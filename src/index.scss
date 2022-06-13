@@ -36,59 +36,6 @@ header {
   margin: 50px auto;
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.drawer {
-  /* Rectangle 24 */
-
-  position: absolute;
-  width: 385px;
-  right: 0;
-  height: 100%;
-  background: #ffffff;
-  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-
-  padding: 30px;
-
-  .items {
-    flex: 1;
-    overflow: auto;
-  }
-
-  h2 {
-    img {
-      cursor: pointer;
-    }
-  }
-
-  .cart-empty {
-    > img {
-      width: 120px;
-      height: 120px;
-    }
-
-    .greenButton {
-      width: 80%;
-      position: relative;
-
-      img {
-        position: absolute;
-        left: 10px;
-        top: 20px;
-        transform: scaleX(-1);
-      }
-    }
-  }
-}
-
 .search-block {
   border: 1px solid rgba(234, 234, 234, 1);
   border-radius: 10px;
@@ -112,36 +59,6 @@ header {
   }
 }
 
-.cart-item {
-  border: 1px solid rgba(234, 234, 234, 1);
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 15px;
-  position: relative;
-  p {
-    font-size: 16px;
-  }
-
-  b {
-    font-size: 14px;
-  }
-
-  .cart-item-img {
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    height: 70px;
-    width: 70px;
-
-    margin-right: 20px;
-  }
-
-  .remove-btn {
-    position: absolute;
-    right: 10px;
-  }
-}
-
 .remove-btn {
   opacity: 0.5;
   transition: opacity 0.2s ease-in-out;
@@ -152,47 +69,6 @@ header {
   }
 }
 
-.cartTotalBlock {
-  ul {
-    margin-bottom: 20px;
-
-    li {
-      display: flex;
-      align-items: flex-end;
-      gap: 10px;
-
-      div {
-        flex: 1;
-        height: 1px;
-        border-bottom: 1px dashed rgb(176, 176, 176);
-
-        position: relative;
-        top: -4px;
-      }
-    }
-  }
-  .greenButton {
-    position: relative;
-
-    &:disabled {
-      background-color: #c2c2c2;
-      cursor: progress;
-    }
-
-    &:hover {
-      img {
-        transform: translateX(10px);
-      }
-    }
-
-    img {
-      position: absolute;
-      right: 30px;
-      top: 20px;
-      transition: transform 0.15s ease-in-out;
-    }
-  }
-}
 .greenButton {
   width: 100%;
   height: 55px;
@@ -210,6 +86,10 @@ header {
 
   &:active {
     background: darken(rgba(157, 212, 88, 1), 5%);
+  }
+  &:disabled {
+    background-color: #c2c2c2;
+    cursor: progress;
   }
 }
 .d-flex {

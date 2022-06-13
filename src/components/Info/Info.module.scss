@@ -1,0 +1,18 @@
+.cartEmpty {
+  > img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .greenButton {
+    width: 80%;
+    position: relative;
+
+    img {
+      position: absolute;
+      left: 10px;
+      top: 20px;
+      transform: scaleX(-1);
+    }
+  }
+}

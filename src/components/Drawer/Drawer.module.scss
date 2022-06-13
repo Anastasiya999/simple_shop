@@ -1,0 +1,118 @@
+/*---------------------------BackDrop-------------------------*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overlayVisible {
+  visibility: visible;
+  opacity: 1;
+  .drawer {
+    transform: translateX(0);
+  }
+}
+
+/*---------------------------Drawer-------------------------*/
+.drawer {
+  /* Rectangle 24 */
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+  position: absolute;
+  width: 385px;
+  right: 0;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+
+  padding: 30px;
+
+  .items {
+    flex: 1;
+    overflow: auto;
+  }
+
+  h2 {
+    img {
+      cursor: pointer;
+    }
+  }
+}
+
+/*---------------------------CartTotalBlock-------------------------*/
+.cartTotalBlock {
+  ul {
+    margin-bottom: 20px;
+
+    li {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+
+      div {
+        flex: 1;
+        height: 1px;
+        border-bottom: 1px dashed rgb(176, 176, 176);
+
+        position: relative;
+        top: -4px;
+      }
+    }
+  }
+
+  .greenButton {
+    position: relative;
+
+    &:hover {
+      img {
+        transform: translateX(10px);
+      }
+    }
+
+    img {
+      position: absolute;
+      right: 30px;
+      top: 20px;
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+}
+
+/*---------------------------CartItem-------------------------*/
+.cartItem {
+  border: 1px solid rgba(234, 234, 234, 1);
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 15px;
+  position: relative;
+  p {
+    font-size: 16px;
+  }
+
+  b {
+    font-size: 14px;
+  }
+
+  .cartItemImg {
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    height: 70px;
+    width: 70px;
+
+    margin-right: 20px;
+  }
+
+  .remove-btn {
+    position: absolute;
+    right: 10px;
+  }
+}

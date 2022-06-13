@@ -1,10 +1,9 @@
 import React from "react";
-import AppContext from "../context";
+
 import useCart from "../hooks/useCart";
 import { Link } from "react-router-dom";
 
 function Header({ onClickCart }) {
-  // const { cartItems } = React.useContext(AppContext);
   const { totalPrice } = useCart();
 
   return (
@@ -34,7 +33,9 @@ function Header({ onClickCart }) {
           </Link>
         </li>
         <li>
-          <img width={18} height={18} src="/img/user.svg" alt="user"></img>
+          <Link to="/orders">
+            <img width={18} height={18} src="/img/user.svg" alt="user"></img>
+          </Link>
         </li>
       </ul>
     </header>

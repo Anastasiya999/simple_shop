@@ -7,6 +7,7 @@ import Favorites from "./pages/Favorites";
 import { Route, Routes } from "react-router-dom";
 import AppContext from "./context";
 import axios from "axios";
+import Orders from "./pages/Orders";
 
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
@@ -15,6 +16,7 @@ function App() {
   const [items, setItems] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(true);
+  const [isOrderComplete, setIsOrderComplete] = React.useState(false);
 
   const onAddToCart = (product) => {
     try {
@@ -30,12 +32,13 @@ function App() {
           `https://62a42f2447e6e400638da88e.mockapi.io/cart/${product.id}`
         );
       } else {
-        console.log(product);
-        axios.post("https://62a42f2447e6e400638da88e.mockapi.io/cart", product);
         setCartItems((prev) => [...prev, product]);
+        setIsOrderComplete(false);
       }
+      axios.post("https://62a42f2447e6e400638da88e.mockapi.io/cart", product);
     } catch (error) {
       console.log(error.message);
+      alert("Failure to add item to cart");
     }
   };
 
@@ -80,19 +83,21 @@ function App() {
 
   React.useEffect(() => {
     async function fetchData() {
-      const itemsRes = await axios.get(
-        "https://62a42f2447e6e400638da88e.mockapi.io/items"
-      );
-      const cartRes = await axios.get(
-        "https://62a42f2447e6e400638da88e.mockapi.io/cart"
-      );
-      const favoritesRes = await axios.get(
-        "https://62a42f2447e6e400638da88e.mockapi.io/favorites"
-      );
-      setIsLoading(false);
-      setItems(itemsRes.data);
-      setCartItems(cartRes.data);
-      setFavorites(favoritesRes.data);
+      try {
+        const [itemsRes, cartRes, favoritesRes] = await Promise.all([
+          axios.get("https://62a42f2447e6e400638da88e.mockapi.io/items"),
+          axios.get("https://62a42f2447e6e400638da88e.mockapi.io/cart"),
+          axios.get("https://62a42f2447e6e400638da88e.mockapi.io/favorites"),
+        ]);
+
+        setIsLoading(false);
+        setItems(itemsRes.data);
+        setCartItems(cartRes.data);
+        setFavorites(favoritesRes.data);
+      } catch (error) {
+        alert("Failure to load data");
+        console.error(error);
+      }
     }
     fetchData();
   }, []);
@@ -103,7 +108,9 @@ function App() {
         items,
         cartItems,
         favorites,
-
+        isOrderComplete,
+        setIsOrderComplete,
+        onRemoveItem,
         isItemAdded,
         onAddToFavorite,
         setCartOpened,
@@ -111,13 +118,13 @@ function App() {
       }}
     >
       <div className="wrapper">
-        {cartOpened && (
-          <Drawer
-            items={cartItems}
-            onClose={() => setCartOpened(false)}
-            onRemove={onRemoveItem}
-          />
-        )}
+        <Drawer
+          items={cartItems}
+          onClose={() => setCartOpened(false)}
+          onRemove={onRemoveItem}
+          opened={cartOpened}
+        />
+
         <Header onClickCart={() => setCartOpened(true)} />
         <Routes>
           <Route
@@ -137,6 +144,7 @@ function App() {
             }
           />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
       </div>
     </AppContext.Provider>
