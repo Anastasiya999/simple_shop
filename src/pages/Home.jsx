@@ -7,7 +7,26 @@ function Home({
   onAddToFavorite,
   onSearchChange,
   cartItems,
+  isLoading,
 }) {
+  function renderItems() {
+    const filteredItems = items.filter((item) =>
+      item.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
+
+    return (isLoading ? [...Array(10)] : filteredItems).map((item, index) => {
+      return (
+        <Card
+          key={index}
+          onPlus={(obj) => onAddToCart(obj)}
+          onFavorite={onAddToFavorite}
+          added={cartItems.some((obj) => Number(item.id) == Number(obj.id))}
+          loading={isLoading}
+          {...item}
+        />
+      );
+    });
+  }
   return (
     <div className="content p-40">
       <div className="d-flex align-center justify-between mb-40">
@@ -31,25 +50,7 @@ function Home({
           />
         </div>
       </div>
-      <div className="d-flex flex-wrap">
-        {items
-          .filter((item) =>
-            item.title.toLowerCase().includes(searchValue.toLowerCase())
-          )
-          .map((item, index) => {
-            return (
-              <Card
-                key={item.imageUrl}
-                onPlus={(obj) => onAddToCart(obj)}
-                onFavorite={onAddToFavorite}
-                added={cartItems.some(
-                  (obj) => Number(item.id) == Number(obj.id)
-                )}
-                {...item}
-              />
-            );
-          })}
-      </div>
+      <div className="d-flex flex-wrap">{renderItems()}</div>
     </div>
   );
 }
