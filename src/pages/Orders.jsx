@@ -20,7 +20,7 @@ function Orders() {
 
   return (
     <div className="content p-40">
-      <div className="d-flex align-center justify-between mb-40">
+      <div className="subheader d-flex align-center justify-between mb-40 pb-10">
         <h1>My orders</h1>
       </div>
       <div className="d-flex flex-wrap">

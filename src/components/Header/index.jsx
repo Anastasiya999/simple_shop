@@ -34,7 +34,7 @@ function Header({ onClickCart }) {
           </Link>
         </li>
 
-        <li onClick={onClickCart} style={{ cursor: "pointer" }}>
+        <li onClick={onClickCart}>
           <i class="bx bxs-shopping-bag mr-2"></i>
           <span>{totalPrice}</span>
         </li>

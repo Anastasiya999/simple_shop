@@ -49,14 +49,16 @@ function Card({
         <>
           {" "}
           {onFavorite && (
-            <img
-              src={isFavorite ? "/img/liked.svg" : "/img/unliked.svg"}
-              alt="unliked"
-              className={styles.favorite}
+            <i
+              className={[
+                styles.favorite,
+                isFavorite ? "bxs-bookmark" : "bx-bookmark",
+                "bx",
+              ].join(" ")}
               onClick={onClickFavorite}
-            />
+            ></i>
           )}
-          <img width={133} height={112} src={imageUrl} alt="plant" />
+          <img height={203} src={imageUrl} alt="plant" />
           <h5>{title}</h5>
           <div className="d-flex justify-between align-center">
             <div className="d-flex flex-column">
@@ -65,14 +67,15 @@ function Card({
             </div>
 
             {onPlus && (
-              <img
-                style={{ cursor: "pointer" }}
+              <i
+                className={[
+                  isItemAdded(id)
+                    ? "bxs-message-square-add"
+                    : "bx-message-square-add",
+                  "bx",
+                ].join(" ")}
                 onClick={onClickPlus}
-                src={
-                  isItemAdded(id) ? "/img/btn-checked.svg" : "/img/btn-plus.svg"
-                }
-                alt="plus"
-              />
+              ></i>
             )}
           </div>
         </>

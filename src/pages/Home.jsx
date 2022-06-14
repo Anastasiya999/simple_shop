@@ -34,14 +34,12 @@ function Home({
         <div className="search-block d-flex">
           <img src="/img/search.svg" alt="Search" />
           {searchValue && (
-            <img
-              src="img/btn-remove.svg"
-              className="clear"
-              alt="clear"
+            <i
+              className="clear bx bx-message-square-add"
               onClick={() => {
                 setSearchValue("");
               }}
-            />
+            ></i>
           )}
           <input
             onChange={onSearchChange}
@@ -50,7 +48,7 @@ function Home({
           />
         </div>
       </div>
-      <div className="d-flex flex-wrap">{renderItems()}</div>
+      <div className="plants d-flex flex-wrap">{renderItems()}</div>
     </div>
   );
 }
