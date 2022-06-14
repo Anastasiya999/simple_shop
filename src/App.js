@@ -123,7 +123,7 @@ function App() {
         setCartItems,
       }}
     >
-      <div className="wrapper">
+      <>
         <Drawer
           items={cartItems}
           onClose={() => setCartOpened(false)}
@@ -132,27 +132,29 @@ function App() {
         />
 
         <Header onClickCart={() => setCartOpened(true)} />
-        <Routes>
-          <Route
-            path="/"
-            exact
-            element={
-              <Home
-                items={items}
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-                onAddToCart={onAddToCart}
-                onAddToFavorite={onAddToFavorite}
-                onSearchChange={onSearchChange}
-                cartItems={cartItems}
-                isLoading={isLoading}
-              />
-            }
-          />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/orders" element={<Orders />} />
-        </Routes>
-      </div>
+        <div className="wrapper">
+          <Routes>
+            <Route
+              path="/"
+              exact
+              element={
+                <Home
+                  items={items}
+                  searchValue={searchValue}
+                  setSearchValue={setSearchValue}
+                  onAddToCart={onAddToCart}
+                  onAddToFavorite={onAddToFavorite}
+                  onSearchChange={onSearchChange}
+                  cartItems={cartItems}
+                  isLoading={isLoading}
+                />
+              }
+            />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/orders" element={<Orders />} />
+          </Routes>
+        </div>
+      </>
     </AppContext.Provider>
   );
 }
