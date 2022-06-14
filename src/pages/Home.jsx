@@ -29,8 +29,8 @@ function Home({
   }
   return (
     <div className="content p-40">
-      <div className="d-flex align-center flex-wrap justify-between mb-40">
-        <h1>All sneakers</h1>
+      <div className="subheader d-flex align-center flex-wrap justify-between mb-40 pb-10">
+        <h1>All plants</h1>
         <div className="search-block d-flex">
           <img src="/img/search.svg" alt="Search" />
           {searchValue && (
