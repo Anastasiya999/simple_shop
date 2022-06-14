@@ -1,13 +1,16 @@
 import React from "react";
-import "./styles/App.scss";
+import axios from "axios";
+import { Route, Routes } from "react-router-dom";
+
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
-import { Route, Routes } from "react-router-dom";
-import AppContext from "./context";
-import axios from "axios";
 import Orders from "./pages/Orders";
+
+import AppContext from "./context";
+
+import "./styles/App.scss";
 
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
@@ -25,11 +28,9 @@ function App() {
       });
       if (findItem) {
         setCartItems((prev) =>
-          prev.filter(
-            (item) => Number(item.parentId) != Number(product.parentId)
-          )
+          prev.filter((item) => Number(item.parentId) != Number(product.id))
         );
-        console.log("deleting", product);
+
         axios.delete(
           `https://62a42f2447e6e400638da88e.mockapi.io/cart/${findItem.id}`
         );

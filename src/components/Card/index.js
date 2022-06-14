@@ -1,10 +1,11 @@
-import styles from "./Card.module.scss";
+import React from "react";
 import ContentLoader from "react-content-loader";
 import AppContext from "../../context";
-import { useEffect, useState, useContext } from "react";
+
+import styles from "./Card.module.scss";
+
 function Card({
   id,
-  parentId,
   title,
   price,
   imageUrl,
@@ -13,9 +14,9 @@ function Card({
   favorited = false,
   loading = false,
 }) {
-  const { isItemAdded } = useContext(AppContext);
+  const { isItemAdded } = React.useContext(AppContext);
 
-  const [isFavorite, setFavorite] = useState(favorited);
+  const [isFavorite, setFavorite] = React.useState(favorited);
   const item = { id, parentId: id, title, price, imageUrl };
 
   const onClickPlus = () => {
@@ -55,7 +56,7 @@ function Card({
               onClick={onClickFavorite}
             />
           )}
-          <img width={133} height={112} src={imageUrl} />
+          <img width={133} height={112} src={imageUrl} alt="plant" />
           <h5>{title}</h5>
           <div className="d-flex justify-between align-center">
             <div className="d-flex flex-column">

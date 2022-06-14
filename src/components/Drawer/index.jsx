@@ -1,12 +1,14 @@
 import React from "react";
-import useCart from "../../hooks/useCart";
-import Info from "../Info";
 import axios from "axios";
 
-import styles from "./Drawer.module.scss";
+import AppContext from "../../context";
+import useCart from "../../hooks/useCart";
+
+import Info from "../Info";
 import CartItem from "./CartItem";
 import CartTotalBlock from "./CartTotalBlock";
-import AppContext from "../../context";
+
+import styles from "./Drawer.module.scss";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -47,10 +49,10 @@ function Drawer({ onClose, items = [], opened }) {
     <div
       className={[styles.overlay, opened && styles.overlayVisible].join(" ")}
     >
-      <div className={`${styles.drawer} d-flex flex-column`}>
+      <div className={[styles.drawer, "d-flex flex-column"].join(" ")}>
         <h2 className="d-flex justify-between">
           Cart
-          <img src="img/btn-remove.svg" onClick={onClose} />
+          <img src="img/btn-remove.svg" alt="remove" onClick={onClose} />
         </h2>
         {items.length > 0 ? (
           <>

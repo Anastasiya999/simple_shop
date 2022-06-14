@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import useCart from "../hooks/useCart";
-import { Link } from "react-router-dom";
 
 function Header({ onClickCart }) {
   const { totalPrice } = useCart();
@@ -10,7 +10,7 @@ function Header({ onClickCart }) {
     <header className="d-flex justify-between align-center p-40">
       <Link to="/">
         <div className="d-flex align-center">
-          <img width={40} height={40} src="/img/logo.png"></img>
+          <img width={40} height={40} src="/img/logo.png" alt="logo"></img>
           <div>
             <h3 className="text-uppercase">React sneakers</h3>
             <p>Shop with the best sneakers</p>
