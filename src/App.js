@@ -130,7 +130,7 @@ function App() {
         <div className="wrapper">
           <Routes>
             <Route
-              path="/simple-shop"
+              path="/simple_shop"
               exact
               element={
                 <Home
@@ -142,8 +142,8 @@ function App() {
                 />
               }
             />
-            <Route path="simple-shop/favorites" element={<Favorites />} />
-            <Route path="simple-shop/orders" element={<Orders />} />
+            <Route path="simple_shop/favorites" element={<Favorites />} />
+            <Route path="simple_shop/orders" element={<Orders />} />
           </Routes>
         </div>
       </>
