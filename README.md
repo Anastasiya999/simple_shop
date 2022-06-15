@@ -1,4 +1,8 @@
-# Design in Figma
+## Current deployed version
+
+[https://anastasiya999.github.io/simple_shop/](https://anastasiya999.github.io/simple_shop/)
+
+## Design in Figma
 
 See [https://www.figma.com/file/0EnMxD4DbmjBV4tB8l42n0/plant-shop?node-id=0%3A1](https://www.figma.com/file/0EnMxD4DbmjBV4tB8l42n0/plant-shop?node-id=0%3A1)
 
