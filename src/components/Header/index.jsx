@@ -14,7 +14,7 @@ function Header({ onClickCart }) {
         " "
       )}
     >
-      <Link to="/">
+      <Link to="/simple-shop">
         <div className="d-flex align-center">
           <div>
             <h3>Plant shop</h3>
