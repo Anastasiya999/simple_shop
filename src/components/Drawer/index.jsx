@@ -71,13 +71,13 @@ function Drawer({ onClose, items = [], opened }) {
           <Info
             title="The order is complete"
             description={`You can check your order #${orderId} in user's panel`}
-            imgSrc="/img/complete-order.png"
+            imgSrc="img/complete-order.png"
           />
         ) : (
           <Info
             title="Oops! Your cart is empty!"
             description="Looks like you haven’t added anything to your cart yet."
-            imgSrc="/img/empty-cart.png"
+            imgSrc="img/empty-cart.png"
           />
         )}
       </div>

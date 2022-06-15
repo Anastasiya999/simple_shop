@@ -8,7 +8,7 @@ function ActionButton({ title, onClick, disabled, className }) {
       onClick={onClick}
     >
       {title}
-      <img src="/img/arrow.svg" alt="arrow" />
+      <img src="img/arrow.svg" alt="arrow" />
     </button>
   );
 }

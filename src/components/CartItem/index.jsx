@@ -20,7 +20,7 @@ function CartItem({ item }) {
         <b>{item.price} pln</b>
       </div>
       <img
-        src="/img/btn-remove.svg"
+        src="img/btn-remove.svg"
         alt="remove"
         className={styles.removeBtn}
         onClick={() => onRemoveItem(item.id)}
