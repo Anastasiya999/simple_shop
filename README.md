@@ -1,3 +1,7 @@
+# Design in Figma
+
+See [https://www.figma.com/file/0EnMxD4DbmjBV4tB8l42n0/plant-shop?node-id=0%3A1](https://www.figma.com/file/0EnMxD4DbmjBV4tB8l42n0/plant-shop?node-id=0%3A1)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
