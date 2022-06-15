@@ -14,7 +14,7 @@ function Header({ onClickCart }) {
         " "
       )}
     >
-      <Link to="/simple-shop">
+      <Link to="/simple_shop">
         <div className="d-flex align-center">
           <div>
             <h3>Plant shop</h3>
@@ -24,12 +24,12 @@ function Header({ onClickCart }) {
 
       <ul className="d-flex">
         <li>
-          <Link to="/orders">
+          <Link to="/simple_shop/orders">
             <i class="bx bxs-user"></i>
           </Link>
         </li>
         <li>
-          <Link to="/favorites">
+          <Link to="/simple_shop/favorites">
             <i class="bx bxs-bookmark"></i>
           </Link>
         </li>
