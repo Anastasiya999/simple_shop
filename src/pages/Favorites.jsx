@@ -3,16 +3,16 @@ import React from "react";
 import AppContext from "../context";
 
 import Card from "../components/Card";
+import SubHeader from "../components/SubHeader";
+import CardWrapper from "../components/CardWrapper/indes";
 
 function Favorites() {
   const { favorites, onAddToFavorite } = React.useContext(AppContext);
 
   return (
-    <div className="content p-40">
-      <div className="subheader d-flex align-center justify-between mb-40 pb-10">
-        <h1>My favorites</h1>
-      </div>
-      <div className="d-flex flex-wrap">
+    <div className="p-40">
+      <SubHeader title="My favorites" />
+      <CardWrapper>
         {favorites.map((item, index) => {
           return (
             <Card
@@ -23,7 +23,7 @@ function Favorites() {
             />
           );
         })}
-      </div>
+      </CardWrapper>
     </div>
   );
 }

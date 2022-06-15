@@ -1,4 +1,5 @@
-import styles from "./Drawer.module.scss";
+import ActionButton from "../ActionButton";
+import styles from "./CartTotalBlock.module.scss";
 
 function CartTotalBlock({ totalPrice, isLoading, onClickOrder }) {
   return (
@@ -15,14 +16,12 @@ function CartTotalBlock({ totalPrice, isLoading, onClickOrder }) {
           <b>{(totalPrice / 100) * 5} pln</b>
         </li>
       </ul>
-      <button
-        className={[styles.greenButton, "greenButton"].join(" ")}
+      <ActionButton
+        title="Check out"
+        className={styles.actionBtn}
         disabled={isLoading}
         onClick={onClickOrder}
-      >
-        Check out
-        <img src="/img/arrow.svg" alt="arrow" />
-      </button>
+      />
     </div>
   );
 }

@@ -13,60 +13,16 @@ code {
     monospace;
 }
 
-.subheader {
-  gap: 1rem;
-  flex-direction: column;
-  border-bottom: 1px solid lighten(rgba(49, 50, 50, 1), 50%);
-
-  @media (min-width: 35rem) {
-    flex-direction: row;
-  }
-}
-
 .wrapper {
   max-width: 1080px;
   margin: 0px auto;
 }
 
-.plants {
-  padding: 0.5em;
-  gap: 1em;
-}
-
-h1 {
+h1,
+h2 {
   font-family: var(--ff-serif);
   font-size: var(--fs-600);
   font-weight: var(--fw-regular);
-}
-
-.search-block {
-  border: 1px solid rgba(234, 234, 234, 1);
-  border-radius: 10px;
-  padding-inline: 15px;
-  position: relative;
-
-  input {
-    background-color: transparent;
-    border: 0;
-    padding: 13px;
-    font-size: var(--fs-300);
-    font-family: var(--ff-serif);
-
-    width: 200px;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  .clear {
-    cursor: pointer;
-    position: absolute;
-    top: 12px;
-    right: 15px;
-    width: 18px;
-    height: 18px;
-  }
 }
 
 .remove-btn {
@@ -76,29 +32,5 @@ h1 {
 
   &:hover {
     opacity: 1;
-  }
-}
-
-.greenButton {
-  width: 100%;
-  height: 55px;
-  background: rgba(157, 212, 88, 1);
-  border-radius: 18px;
-  border: none;
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-
-  cursor: pointer;
-  &:hover {
-    background: lighten(rgba(157, 212, 88, 1), 5%);
-  }
-
-  &:active {
-    background: darken(rgba(157, 212, 88, 1), 5%);
-  }
-  &:disabled {
-    background-color: #c2c2c2;
-    cursor: progress;
   }
 }

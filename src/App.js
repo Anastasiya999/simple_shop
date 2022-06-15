@@ -17,7 +17,6 @@ function App() {
   const [cartItems, setCartItems] = React.useState([]);
   const [favorites, setFavorites] = React.useState([]);
   const [items, setItems] = React.useState([]);
-  const [searchValue, setSearchValue] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(true);
   const [isOrderComplete, setIsOrderComplete] = React.useState(false);
 
@@ -58,10 +57,6 @@ function App() {
       alert("Error while deleting from cart");
       console.error(error);
     }
-  };
-
-  const onSearchChange = (event) => {
-    setSearchValue(event.target.value);
   };
 
   const onAddToFavorite = async (product) => {
@@ -140,11 +135,8 @@ function App() {
               element={
                 <Home
                   items={items}
-                  searchValue={searchValue}
-                  setSearchValue={setSearchValue}
                   onAddToCart={onAddToCart}
                   onAddToFavorite={onAddToFavorite}
-                  onSearchChange={onSearchChange}
                   cartItems={cartItems}
                   isLoading={isLoading}
                 />

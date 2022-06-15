@@ -1,0 +1,25 @@
+.actionBtn {
+  width: 100%;
+  height: 55px;
+  background: transparent;
+  border-radius: 18px;
+  border: 1px solid var(--color-light);
+  color: var(--color-light);
+
+  font-size: var(--fs-400);
+  font-family: var(--ff-cursive);
+  font-weight: 500;
+
+  cursor: pointer;
+  &:hover {
+    background: lighten(rgba(49, 50, 50, 1), 5%);
+  }
+
+  &:active {
+    background: darken(rgba(49, 50, 50, 1), 5%);
+  }
+  &:disabled {
+    background-color: #c2c2c2;
+    cursor: progress;
+  }
+}

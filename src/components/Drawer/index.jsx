@@ -5,8 +5,8 @@ import AppContext from "../../context";
 import useCart from "../../hooks/useCart";
 
 import Info from "../Info";
-import CartItem from "./CartItem";
-import CartTotalBlock from "./CartTotalBlock";
+import CartItem from "../CartItem";
+import CartTotalBlock from "../CartTotalBlock";
 
 import styles from "./Drawer.module.scss";
 
@@ -16,7 +16,6 @@ function Drawer({ onClose, items = [], opened }) {
   const { setIsOrderComplete, isOrderComplete } = React.useContext(AppContext);
   const [isLoading, setIsLoading] = React.useState(false);
   const [orderId, setOrderId] = React.useState(null);
-
   const { cartItems, setCartItems, totalPrice } = useCart();
 
   const onClickOrder = async () => {
@@ -45,6 +44,7 @@ function Drawer({ onClose, items = [], opened }) {
     }
     setIsLoading(false);
   };
+
   return (
     <div
       className={[styles.overlay, opened && styles.overlayVisible].join(" ")}
@@ -71,13 +71,13 @@ function Drawer({ onClose, items = [], opened }) {
           <Info
             title="The order is complete"
             description={`You can check your order #${orderId} in user's panel`}
-            imgSrc="/img/complete-order.jpg"
+            imgSrc="/img/complete-order.png"
           />
         ) : (
           <Info
-            title="The cart is empty"
-            descrption="Add at least one item to order"
-            imgSrc="/img/empty-cart.jpg"
+            title="Oops! Your cart is empty!"
+            description="Looks like you haven’t added anything to your cart yet."
+            imgSrc="/img/empty-cart.png"
           />
         )}
       </div>

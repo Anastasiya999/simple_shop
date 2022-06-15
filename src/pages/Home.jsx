@@ -1,15 +1,15 @@
 import React from "react";
 import Card from "../components/Card";
+import CardWrapper from "../components/CardWrapper/indes";
+import SubHeader from "../components/SubHeader";
+import SeachBlock from "../components/SearchBlock";
 
-function Home({
-  items,
-  searchValue,
-  setSearchValue,
-  onAddToCart,
-  onAddToFavorite,
-  onSearchChange,
-  isLoading,
-}) {
+function Home({ items, onAddToCart, onAddToFavorite, isLoading }) {
+  const [searchValue, setSearchValue] = React.useState("");
+  const onSearchChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
   function renderItems() {
     const filteredItems = items.filter((item) =>
       item.title.toLowerCase().includes(searchValue.toLowerCase())
@@ -28,27 +28,15 @@ function Home({
     });
   }
   return (
-    <div className="content p-40">
-      <div className="subheader d-flex align-center flex-wrap justify-between mb-40 pb-10">
-        <h1>All plants</h1>
-        <div className="search-block d-flex">
-          <img src="/img/search.svg" alt="Search" />
-          {searchValue && (
-            <i
-              className="clear bx bx-message-square-add"
-              onClick={() => {
-                setSearchValue("");
-              }}
-            ></i>
-          )}
-          <input
-            onChange={onSearchChange}
-            placeholder="Type to search..."
-            value={searchValue}
-          />
-        </div>
-      </div>
-      <div className="plants d-flex flex-wrap">{renderItems()}</div>
+    <div className="p-40">
+      <SubHeader title="All plants">
+        <SeachBlock
+          searchValue={searchValue}
+          onSearchChange={onSearchChange}
+          setSearchValue={setSearchValue}
+        />
+      </SubHeader>
+      <CardWrapper>{renderItems()}</CardWrapper>
     </div>
   );
 }

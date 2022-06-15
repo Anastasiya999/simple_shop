@@ -1,0 +1,18 @@
+.subheader {
+  gap: 1rem;
+  flex-direction: column;
+  border-bottom: 1px solid lighten(rgba(49, 50, 50, 1), 50%);
+
+  @media (min-width: 35rem) {
+    flex-direction: row;
+  }
+}
+.subheader {
+  gap: 1rem;
+  flex-direction: column;
+  border-bottom: 1px solid lighten(rgba(49, 50, 50, 1), 50%);
+
+  @media (min-width: 35rem) {
+    flex-direction: row;
+  }
+}

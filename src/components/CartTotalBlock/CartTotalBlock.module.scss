@@ -1,0 +1,44 @@
+.cartTotalBlock {
+  padding-inline: 2rem;
+  color: var(--color-light);
+  ul {
+    margin-bottom: 20px;
+
+    li {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+
+      font-family: var(--ff-serif);
+      b {
+        font-weight: var(--fw-medium);
+      }
+
+      div {
+        flex: 1;
+        height: 1px;
+        border-bottom: 1px dashed var(--color-light);
+
+        position: relative;
+        top: -4px;
+      }
+    }
+  }
+
+  .actionBtn {
+    position: relative;
+
+    &:hover {
+      img {
+        transform: translateX(10px);
+      }
+    }
+
+    img {
+      position: absolute;
+      right: 30px;
+      top: 20px;
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+}

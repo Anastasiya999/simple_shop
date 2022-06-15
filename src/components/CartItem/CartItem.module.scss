@@ -1,0 +1,30 @@
+.cartItem {
+  background-color: var(--color-light);
+  border-radius: 20px 0px 0px 20px;
+
+  padding: 15px;
+  position: relative;
+
+  width: 80%;
+  min-height: 8em;
+
+  p {
+    font-family: var(--ff-cursive);
+  }
+  b {
+    font-family: var(--ff-serif);
+    margin-top: 1em;
+  }
+  .cartItemImg {
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    min-height: 90%;
+    min-width: 40%;
+  }
+
+  .removeBtn {
+    position: absolute;
+    right: 1em;
+  }
+}

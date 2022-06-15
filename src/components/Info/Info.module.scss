@@ -1,10 +1,25 @@
-.cartEmpty {
-  > img {
-    width: 120px;
-    height: 120px;
+.info {
+  text-align: center;
+  padding-inline: 2em;
+  color: var(--color-light);
+
+  .title {
+    font-family: var(--ff-cursive);
+    font-size: var(--fs-500);
+    margin-bottom: 0.5em;
   }
 
-  .greenButton {
+  p {
+    font-family: var(--ff-serif);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-light);
+  }
+  > img {
+    width: 210px;
+    height: auto;
+  }
+  margin: auto 0;
+  .actionBtn {
     width: 80%;
     position: relative;
 

@@ -1,0 +1,29 @@
+.searchBlock {
+  border: 1px solid rgba(234, 234, 234, 1);
+  border-radius: 10px;
+  padding-inline: 15px;
+  position: relative;
+
+  input {
+    background-color: transparent;
+    border: 0;
+    padding: 13px;
+    font-size: var(--fs-300);
+    font-family: var(--ff-serif);
+
+    width: 200px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .clear {
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    width: 18px;
+    height: 18px;
+  }
+}
